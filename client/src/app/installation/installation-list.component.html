@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-end">
+  <a href="/installation/new" class="btn btn-primary link-installation link-primary mb-3">
+    New Installation
+  </a>
+</div>
+<div class="installation-list" *ngFor= "let installation of installations">
+  <div class="installatin-item"> 
+    <div> <strong>ID : </strong>{{ installation.id }} </div>
+    <div><strong>Adress:</strong> {{ installation?.address }}</div>
+    <div><strong>Insatallé le:</strong> {{ installation.installed_at }}</div>
+    <div><strong>Type:</strong> {{ installation.kind }}</div>
+    <div><strong>Identifiant panneaux:</strong> {{ installation.panels_identification }} </div>
+    <h3> Company </h3>
+    <div><strong>ID:</strong> {{ installation.company?.id }} </div>
+    <div><strong>Nom:</strong> {{ installation.company?.name }} </div>
+    <div><strong>N° Siren:</strong> {{ installation.company?.siren }} </div>
+    <h3> Customer </h3>
+    <div><strong>ID:</strong> {{ installation.customer?.id }} </div>
+    <div><strong>Nom:</strong> {{ installation.customer?.name }} </div>
+    <div><strong>Email:</strong> {{ installation.customer?.email }} </div>
+    <div><strong>N° Tel:</strong> {{ installation.customer?.phone_number }} </div>
+    <div class="d-flex justify-content-end">
+      <a class="btn btn-primary link-installation link-primary" (click)=" goToShow(installation)">
+        Details
+      </a>
+    </div>
+  </div>

@@ -1,0 +1,29 @@
+<ng-container [formGroup]="customerFormGroup">
+  <div class="form-group">
+    <label>name</label>
+    <span *ngIf="(customerFormGroup.controls.name.dirty || customerFormGroup.controls.name.touched)">
+      <span *ngIf="customerFormGroup.controls.name.invalid" class="text-danger"> *required</span>
+    </span>
+    <input type="text" class="form-control" required formControlName="name" name="name" >
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <span *ngIf="(customerFormGroup.controls.email.dirty || customerFormGroup.controls.email.touched)">
+      <span *ngIf="customerFormGroup.controls.email.errors?.required" class="text-danger"> *required</span>
+    </span>
+    <span *ngIf="(customerFormGroup.controls.email.dirty || customerFormGroup.controls.email.touched)">
+      <span *ngIf="customerFormGroup.controls.email.errors?.email" class="text-danger"> *Enter a valid email name</span>
+    </span>
+    <input type="text" class="form-control" required formControlName="email" name="email" >
+  </div>
+  <div class="form-group">
+    <label>Phone number</label>
+    <span *ngIf="(customerFormGroup.controls.phone_number.dirty || customerFormGroup.controls.phone_number.touched)">
+      <span *ngIf="customerFormGroup.controls.phone_number.errors?.required" class="text-danger"> *required</span>
+    </span>
+    <span *ngIf="(customerFormGroup.controls.phone_number.dirty || customerFormGroup.controls.phone_number.touched)">
+      <span *ngIf="customerFormGroup.controls.phone_number.errors?.phone_number" class="text-danger"> *Enter a valid phone_number name</span>
+    </span>
+    <input type="text" class="form-control" required formControlName="phone_number" name="phone_number" >
+  </div>
+</ng-container>

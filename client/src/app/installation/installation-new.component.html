@@ -1,0 +1,15 @@
+<div class="form-container">
+  <img class="logo-center" src="assets/img/logo.png">
+
+  <form [formGroup]="reactiveForm" (ngSubmit)="createInstallation(reactiveForm.value)" novalidate>
+    <app-installation-info formGroupName="installation"></app-installation-info>
+    <button type="submit" [disabled]="reactiveForm.invalid" class="btn btn-success submit-btn">Submit</button>
+  </form>
+</div>
+<div class="footer">
+  <div class="footer-items">
+    <div>DualSun</div>
+    <div>+33 4 13 41 53 70</div>
+    <div>contact@dualsun.fr</div>
+  </div>
+</div>

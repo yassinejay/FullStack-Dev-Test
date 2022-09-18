@@ -1,0 +1,19 @@
+<ng-container [formGroup]="companyFormGroup">
+  <div class="form-group">
+    <label>name</label>
+    <span *ngIf="(companyFormGroup.controls.name.dirty || companyFormGroup.controls.name.touched)">
+      <span *ngIf="companyFormGroup.controls.name.invalid" class="text-danger"> *required</span>
+    </span>
+    <input type="text" class="form-control" required formControlName="name" name="name" >
+  </div>
+  <div class="form-group">
+    <label>Siren</label>
+    <span *ngIf="(companyFormGroup.controls.siren.dirty || companyFormGroup.controls.siren.touched)">
+      <span *ngIf="companyFormGroup.controls.siren.errors?.required" class="text-danger"> *required</span>
+    </span>
+    <span *ngIf="(companyFormGroup.controls.siren.dirty || companyFormGroup.controls.siren.touched)">
+      <span *ngIf="companyFormGroup.controls.siren.errors?.siren" class="text-danger"> *Enter a valid siren</span>
+    </span>
+    <input type="number" class="form-control" required formControlName="siren" name="siren" >
+  </div>
+</ng-container>

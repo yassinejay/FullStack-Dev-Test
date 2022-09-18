@@ -1,0 +1,14 @@
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+# Layout/TrailingWhitespace:
+  # IgnoredPatterns: ['\A#']
+Style/ClassAndModuleChildren:
+  Enabled: false
+AllCops:
+  TargetRubyVersion: 2.6.5
+Metrics/ClassLength:
+  Enabled: false
+Metrics/AbcSize:
+  Enable: false

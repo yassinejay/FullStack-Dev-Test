@@ -1,0 +1,76 @@
+<ng-container [formGroup]="installationFormGroup">
+  <!-- ############## Addresse field -->
+  <div class="form-group">
+    <div class="installation-title">
+      <h4>Installation</h4>
+    </div>
+
+    <!-- ############## address field -->
+    <label>Adresse</label>
+    <span *ngIf="(installationFormGroup.controls.address.dirty || installationFormGroup.controls.address.touched)">
+      <span *ngIf="installationFormGroup.controls.address.invalid" class="text-danger"> *required</span>
+    </span>
+    <input type="text" class="form-control" required formControlName="address" name="address" >
+  </div>
+
+  <!-- ############## installedAt field -->
+  <div class="form-group">
+    <label>Date Time Range:</label>
+    <span *ngIf="(installationFormGroup.controls.installed_at.dirty || installationFormGroup.controls.installed_at.touched)">
+      <span *ngIf="installationFormGroup.controls.installed_at.errors?.required" class="text-danger"> *required</span>
+    </span>
+    <span *ngIf="(installationFormGroup.controls.installed_at.dirty || installationFormGroup.controls.installed_at.touched)">
+      <span *ngIf="installationFormGroup.controls.installed_at.errors?.installed_at" class="text-danger"> *Enter a valid indtalled_at</span>
+    </span>
+    <input [owlDateTime]="installed_at" [owlDateTimeTrigger]="installed_at"  class="form-control" required formControlName="installed_at" name="installed_at">
+    <owl-date-time #installed_at></owl-date-time>
+  </div>
+
+  <!-- ############## kind field -->
+  <div class="form-group">
+    <label>Kind</label>
+    <span *ngIf="(installationFormGroup.controls.address.dirty || installationFormGroup.controls.address.touched)">
+      <span *ngIf="installationFormGroup.controls.address.invalid" class="text-danger"> *required</span>
+    </span>
+    <select class="form-control" aria-label="Disabled select example" required formControlName="kind" name="kind">
+      <option selected value="photovoltaic">Photovoltaic</option>
+      <option value="hybrid">Hybrid</option>
+    </select>
+  </div>
+    
+  <!-- ############## panels Number field -->
+  <div class="form-group">
+    <label>panels Number</label>
+    <span *ngIf="(installationFormGroup.controls.panels_number.dirty || installationFormGroup.controls.panels_number.touched)">
+      <span *ngIf="installationFormGroup.controls.panels_number.errors?.required" class="text-danger"> *required</span>
+    </span>
+    <span *ngIf="(installationFormGroup.controls.panels_number.dirty || installationFormGroup.controls.panels_number.touched)">
+      <span *ngIf="installationFormGroup.controls.panels_number.errors?.panels_number" class="text-danger"> *Enter a valid panels_number</span>
+    </span>
+    <input type="number" class="form-control" required formControlName="panels_number" name="panels_number" >
+  </div>
+
+<!-- ############## panels Identification field -->
+  <div class="form-group">
+    <label>panels Identification</label>
+    <span *ngIf="(installationFormGroup.controls.panels_identification.dirty || installationFormGroup.controls.panels_identification.touched)">
+      <span *ngIf="installationFormGroup.controls.panels_identification.errors?.required" class="text-danger"> *required</span>
+    </span>
+    <span *ngIf="(installationFormGroup.controls.panels_identification.dirty || installationFormGroup.controls.panels_identification.touched)">
+      <span *ngIf="installationFormGroup.controls.panels_identification.errors?.panels_identification" class="text-danger"> *Enter a valid panels_identification</span>
+    </span>
+    <input type="number" class="form-control" required formControlName="panels_identification" name="panels_identification" >
+  </div>
+
+  <!-- ############## customer fields -->
+  <div class="cutomer-title">
+    <h4>Customer</h4>
+    <app-customer-info formGroupName="customer"></app-customer-info>
+  </div>
+  <!-- ############## company fields -->
+  <div class="company-title">
+    <h4>Company</h4>
+    <app-company-info formGroupName="company"></app-company-info>
+  </div>
+</ng-container>
+

@@ -33,4 +33,5 @@ coverage
 .idea
 
 # Ignore local environment file
-.env
+.env.env*
+.rubocop.yml
