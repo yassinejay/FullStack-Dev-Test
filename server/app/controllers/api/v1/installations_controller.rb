@@ -10,13 +10,7 @@ class Api::V1::InstallationsController < Api::V1::BaseController
   end
 
   def create
-    company = Company.find_or_create(company_params&.slice(:siren), company_params)
-    customer = Customer.find_or_create(customer_params&.slice(:name), customer_params)
-    if customer[:errors].present? || company[:errors].present?
-      render_error(customer[:errors], company[:record], customer[:record])
-    else
-      check_installation(company[:record], customer[:record])
-    end
+    check_installation
   end
 
   private
@@ -44,21 +38,12 @@ class Api::V1::InstallationsController < Api::V1::BaseController
     installation_params[:installation].except(:company, :customer)
   end
 
-  def check_installation(company, customer)
-    installation = Installation.create(only_installation_params.merge({
-                                                                        company_id: company.id,
-                                                                        customer_id: customer.id
-                                                                      }))
-    if installation.save
-      render status: :created
-    else
-      render_error(installation.errors.full_messages, company, customer)
-    end
+  def check_installation
+    installation = Installation.create_installation(only_installation_params, company_params, customer_params)
+    installation[:record].present? ? (render status: :created) : render_error(installation[:errors])
   end
 
-  def render_error(errors, company, customer)
-    company&.destroy
-    customer&.destroy
+  def render_error(errors)
     render json: { errors: errors }, status: :unprocessable_entity
   end
 end

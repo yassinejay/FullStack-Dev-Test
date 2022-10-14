@@ -12,3 +12,5 @@ Metrics/ClassLength:
   Enabled: false
 Metrics/AbcSize:
   Enable: false
+Metrics/MethodLength:
+  Enable: false

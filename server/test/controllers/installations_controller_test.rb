@@ -13,6 +13,12 @@ class InstallationsControllerTest < ActionDispatch::IntegrationTest
     siren: Faker::Company.french_siren_number
 
   }
+
+  company1 = {
+    name: Faker::Company.name,
+    siren: 333
+
+  }
   customer = {
     name: Faker::Name.name,
     email: Faker::Internet.email,
@@ -41,8 +47,8 @@ class InstallationsControllerTest < ActionDispatch::IntegrationTest
     installed_at: Faker::Date.in_date_period.to_datetime,
     panels_number: Faker::Number.number(digits: 3),
     kind: :hybrid,
-    panels_identification: 33,
-    company: company,
+    panels_identification: Faker::Number.number(digits: 6),
+    company: company1,
     customer: customer
   }
 
@@ -51,7 +57,7 @@ class InstallationsControllerTest < ActionDispatch::IntegrationTest
     assert_difference 'Installation.count', 1 do
       post api_v1_installations_url, params: { installation: installation }, as: :json
     end
-
+    
     assert_response 201
   end
 

@@ -7,10 +7,13 @@ module Checkable
 
       return { record: record } unless record.blank?
 
-      record = create(params)
-      return { record: record } if record.save
-
-      { record: nil, errors: record.errors.full_messages }
+      ActiveRecord::Base.transaction do
+        record = create(params)
+        record.save!
+        { record: record }
+      end
+    rescue ActiveRecord::RecordInvalid => e
+      { record: nil, errors: e.message }
     end
   end
 end
